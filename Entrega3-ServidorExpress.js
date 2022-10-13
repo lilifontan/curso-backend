@@ -91,6 +91,7 @@ const randomP = async (file) => {
 
 const prodRandom = async (file) => {
   const ran = await randomP(file)
+  return ran
   //console.log (ran)
  }
 
@@ -131,14 +132,14 @@ const server = app.listen(PORT, () => {
 })
 server.on ('error', error => console.log (`Error en servidor ${error}`))
 
-app.get ('/productos', (req, res) => {
-  const rta = all (contenedor.archivo)
-  res.send (rta)
+app.get ('/productos', async (req, res) => {
+  const rta = await all (contenedor.archivo)
+  return res.send (rta)
 })
 
 
-app.get ('/productoRandom', (req, res) => {
-  const prod = prodRandom (contenedor.archivo)
-  res.send (prod)
+app.get ('/productoRandom', async  (req, res) => {
+  const prod = await prodRandom (contenedor.archivo)
+  return res.send (prod)
 
 })
