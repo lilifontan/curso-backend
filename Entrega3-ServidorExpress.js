@@ -1,11 +1,10 @@
+const express = require ('express')
 const fs = require ('fs')
-//const path = require ('path')
-//nombreArchivo = 'productos.json'
 
 class Contenedor {
   archivo;
   productos;
-
+  
   constructor(archivo, productos) {
     this.archivo = archivo
     this.productos = productos
@@ -21,6 +20,10 @@ class Contenedor {
  
 }
 }
+
+
+
+
 //FUNCIONES DE LECTURA Y ESCRITURA DE ARCHIVOS
 const readFile = async (nombreArchivo) => {
   const dato =  await fs.promises.readFile(nombreArchivo, 'utf-8')
@@ -81,7 +84,7 @@ const randomP = async (file) => {
   const id = Math.round(Math.random ()*((contenedor.productos.length-0)+0) ) 
   const indice = productos.findIndex((prod) => prod.id === id)
   console.log (productos[indice])
-  console.log (indice)
+  //console.log (indice)
  return productos[indice]
 }
 ////////////////////////////////////////////
@@ -96,10 +99,10 @@ const prodRandom = async (file) => {
   console.log (selected)
 }
 
-const All = async (file) => {
-  const Alldata = await getAll(file)
-  console.log (Alldata)
-  return (Alldata)
+const all = async (file) => {
+  const alldata = await getAll(file)
+  //console.log (alldata)
+  return (alldata)
 }
 
 const saveProduct = async (file, data) => {
@@ -115,22 +118,27 @@ const deleteProducts = async (file) => {
 }
 
 
-
 // INVOCACIONES PARA TESTEO
-let productos = []
-const contenedor = new Contenedor ('productos.json', productos)
-//console.log (contenedor.productos.length)
-//console.log (productos)
 
-const id = prodRandom (contenedor.archivo)
-//console.log (id)
- 
-//selected (file.archivo, 4)
- /*   saveProduct (file.archivo, {
-    "title": "ooo",
-    "price": 24500,
-    "thumbnail": "/images/brazalete_resized.jpg",
-    "id": 5})
-*/
-//deleteProduct (file.archivo, 4)
-//deleteProducts(file.archivo)
+let productos =[]
+const contenedor = new Contenedor ('productos.json', productos)
+
+const app = express ()
+const PORT = 8080
+
+const server = app.listen(PORT, () => {
+  console.log (`Servidor escuchando en puerto ${server.address().port}` )
+})
+server.on ('error', error => console.log (`Error en servidor ${error}`))
+
+app.get ('/productos', (req, res) => {
+  const rta = all (contenedor.archivo)
+  res.send (rta)
+})
+
+
+app.get ('/productoRandom', (req, res) => {
+  const prod = prodRandom (contenedor.archivo)
+  res.send (prod)
+
+})
