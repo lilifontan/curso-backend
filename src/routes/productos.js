@@ -27,20 +27,22 @@ rutaProductos.get ('/:id', async (req, res) => {
 //POST
 rutaProductos.post ('/',  async (req, res) => {
 	const data =  req.body
-	const {title, price, thumbnail, id} = req.body
-
-	if (!title || !price || !thumbnail || !id ){
+	const {title, price, id} = req.body
+	console.log (title, price, id)
+	
+	if (!title || !price || !id ){
+		console.log (data)
 		return res.status (400).json ({msg: "Se detectan campos sin valor"})
 	}
 
 	const nuevoProducto = {
-		title, price, thumbnail, id
+		title, price, id
 	}
 
 	productos.push (nuevoProducto)
 	console.log (productos)
 
-	await res.json ({
+	await res.send ({
 		msg: 'ok',
 		data: nuevoProducto
 	})

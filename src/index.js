@@ -5,19 +5,16 @@ const fs = productos = [
 	{
 		"title": "Ethereal",
 		"price": 12500,
-		"thumbnail": "/images/Ring_resized.jpg",
 		"id": 1
 	},
 	{
 		"title": "Avar",
 		"price": 15900,
-		"thumbnail": "images/Earrings_resized.jpeg",
 		"id": 2
 	},
 	{
 		"title": "Balter",
 		"price": 24500,
-		"thumbnail": "/images/brazalete_resized.jpg",
 		"id": 3
 	}
 ]
