@@ -6,3 +6,4 @@ const rutaPrincipal = Router ()
 rutaPrincipal.use ('/productos', ProductosRouter)
 
 module.exports = rutaPrincipal
+

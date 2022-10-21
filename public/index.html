@@ -1,28 +1,11 @@
-<h1>Productos</h1>
-<br />
-<form action="api/productos" method="post">
-  <ul>
-    <li>
-      <label for="title"> Nombre del producto:</label>
-      <input type="text" id="'title" title="title" />
-    </li>
+<body>
+  <h2>INGRESAR PRODUCTO</h2>
+  <form action="/api/productos" method="POST">
+    <input type="text" name="titulo" placeholder="Titulo" required />
+    <input type="number" name="precio" placeholder="Precio" required />
     <br />
     <br />
-    <li>
-      <label for="price"> Precio del producto:</label>
-      <input type="text" id="'price" title="price" />
-    </li>
     <br />
-    <br />
-    <li>
-      <label for="id"> ID del producto:</label>
-      <input type="id" id="'id" title="id" />
-    </li>
-    <br />
-    <br />
-    <li>
-      <label class = 'button'>
-      <button type="submit"> Enviar el producto </button>
-    </li>
-  </ul>
-</form>
+    <button type="submit">Enviar el producto</button>
+  </form>
+</body>
