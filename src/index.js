@@ -27,4 +27,8 @@ const fs = productos = [
 })
 
 
+server.on ('error', (err) => {
+	console.log ('Se detecta el error: ', err )
+})
+
 
