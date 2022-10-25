@@ -27,7 +27,7 @@ rutaProductos.get ('/:id', async (req, res) => {
 //POST
 rutaProductos.post ('/',  async (req, res) => {
 	const {title, price} = req.body
-	
+	console.log (req)
 	id = productos.length
 	
 	if (!title || !price  ){
